@@ -1,93 +1,151 @@
-# rad-gp-c25-p-g2
+# Blog REST API – Spring Boot Project
 
+A simple blogging platform backend built with **Java**, **Spring Boot**, **Hibernate (JPA)**, and **JUnit**. It supports basic CRUD operations for **Users**, **Posts**, and **Comments**, demonstrating best practices in RESTful API design, layered architecture, and testing.
 
+---
 
-## Getting started
+## Tech Stack
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- **Java 17+**
+- **Spring Boot**
+- **Spring Data JPA (Hibernate)**
+- **MySQL** or **H2 (for testing)**
+- **JUnit 5 + Mockito**
+- **Spring Web (Spring MVC)**
+- **Lombok**
+- **Swagger (OpenAPI)**
+- **Postman** (for API testing)
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+## Features
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- Create, update, and delete **users**
+- Allow users to write **posts**
+- Add **comments** to blog posts
+- Basic validation and error handling
+- Layered architecture (`Controller → Service → Repository`)
+- Unit and integration testing with JUnit/Mockito
+- API documentation with Swagger UI
+
+---
+
+## Project Structure
 
 ```
-cd existing_repo
-git remote add origin https://gitlab1a.prod.eu-west-1.aws.clickatell.com/andile.lwanga/rad-gp-c25-p-g2.git
-git branch -M master
-git push -uf origin master
+src/
+├── controller/
+├── dto/
+├── entity/
+├── exception/
+├── repository/
+├── service/
+└── test/
 ```
 
-## Integrate with your tools
+---
 
-- [ ] [Set up project integrations](https://gitlab1a.prod.eu-west-1.aws.clickatell.com/andile.lwanga/rad-gp-c25-p-g2/-/settings/integrations)
+## API Endpoints
 
-## Collaborate with your team
+| Method | Endpoint                          | Description                  |
+|--------|-----------------------------------|------------------------------|
+| POST   | `/api/v1/users`                   | Create a user                |
+| GET    | `/api/v1/users`                   | Get all users                |
+| GET    | `/api/v1/users/{id}`              | Get user by ID               |
+| PUT    | `/api/v1/users/{id}`              | Update a user                |
+| DELETE | `/api/v1/users/{id}`              | Delete a user                |
+| POST   | `/api/v1/posts`                   | Create post                  |
+| GET    | `/api/v1/posts`                   | Get all posts                |
+| GET    | `/api/v1/posts/{id}`              | Get post by ID               |
+| POST   | `/api/v1/posts/{id}/comments`     | Add comment to post          |
+| GET    | `/api/v1/posts/{id}/comments`     | Get all comments for post    |
+| DELETE | `/api/v1/comments/{id}`           | Delete comment               |
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+---
 
-## Test and Deploy
+## Running Locally
 
-Use the built-in continuous integration in GitLab.
+### 1. Clone the project
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+```bash
+git clone https://gitlab.com/your-username/blog-api-springboot.git
+cd blog-api-springboot
+```
 
-***
+### 2. Configure DB (optional)
 
-# Editing this README
+Set your database in `src/main/resources/application.properties`:
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/blogdb
+spring.datasource.username=root
+spring.datasource.password=yourpassword
+spring.jpa.hibernate.ddl-auto=update
+```
 
-## Suggestions for a good README
+Or use the in-memory H2 database for testing.
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### 3. Run the application
 
-## Name
-Choose a self-explaining name for your project.
+```bash
+./mvnw spring-boot:run
+```
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+### 4. Access Swagger UI (API Docs)
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+---
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+## Sample Payloads
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Create User
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+```http
+POST /api/v1/users
+Content-Type: application/json
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+{
+  "name": "Andile Lwanga",
+  "email": "andile@example.com"
+}
+```
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### Create Post
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+```http
+POST /api/v1/posts
+Content-Type: application/json
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+{
+  "title": "My First Blog",
+  "content": "Excited to write this!",
+  "userId": 1
+}
+```
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+---
 
-## License
-For open source projects, say how it is licensed.
+##  Running Tests
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+```bash
+./mvnw test
+```
+
+Includes:
+- Unit tests for service layer (JUnit + Mockito)
+- Integration tests for REST endpoints (MockMvc)
+
+---
+
+## Learning Objectives
+
+- RESTful API design with Spring Boot
+- Object-relational mapping using Hibernate
+- Dependency injection & layered architecture
+- Error handling and validation
+- Testing with JUnit/Mockito
+- API documentation with Swagger
+
+---
+
