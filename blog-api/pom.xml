@@ -20,7 +20,7 @@
     <artifactId>blog-api</artifactId>         <!-- The module name -->
     <version>0.0.1-SNAPSHOT</version>         <!-- Version for this build -->
     <name>blog-api</name>                     <!-- Display name for IDEs -->
-    <description>Demo project for Spring Boot</description> <!-- Short description -->
+    <description>rad-gp-c25-p-g2 Blog Project</description> <!-- Short description -->
 
     <!-- Property definitions used in the build -->
     <properties>

@@ -83,7 +83,15 @@ spring.datasource.password=yourpassword
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-Or use the in-memory H2 database for testing.
+Or use the in-memory H2 database (default configuration):
+
+```properties
+server.port=8081
+spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+spring.datasource.username=sa
+spring.datasource.password=
+spring.h2.console.enabled=true
+```
 
 ### 3. Run the application
 
@@ -91,9 +99,12 @@ Or use the in-memory H2 database for testing.
 ./mvnw spring-boot:run
 ```
 
-### 4. Access Swagger UI (API Docs)
+### 4. Access the Application
 
-[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+- **Application:** http://localhost:8081/
+- **H2 Database Console:** http://localhost:8081/h2-console
+- **Swagger UI:** http://localhost:8081/swagger-ui.html
+- **Health Check:** http://localhost:8081/actuator/health
 
 ---
 
@@ -135,6 +146,16 @@ Content-Type: application/json
 Includes:
 - Unit tests for service layer (JUnit + Mockito)
 - Integration tests for REST endpoints (MockMvc)
+
+---
+
+## Troubleshooting
+
+For common issues and solutions, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+
+### Quick Fixes
+- **Port 8080 in use:** Application runs on port 8081
+- **Database issues:** H2 console available at http://localhost:8081/h2-console
 
 ---
 
