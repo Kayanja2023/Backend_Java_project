@@ -83,6 +83,7 @@ class UserControllerTest {
         UserDto inputUser = new UserDto();
         inputUser.setUsername("newuser");
         inputUser.setEmail("new@example.com");
+        inputUser.setPassword("password123");
 
         UserDto createdUser = new UserDto();
         createdUser.setId(1L);

@@ -27,6 +27,10 @@ public class User {
     @Email
     @NotBlank
     private String email;
+    
+    // User's password - stored securely
+    @NotBlank
+    private String password;
 
     // Posts authored by this user - cascades all operations, lazy loaded
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

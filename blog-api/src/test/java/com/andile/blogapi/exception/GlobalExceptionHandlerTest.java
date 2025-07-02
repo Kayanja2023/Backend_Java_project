@@ -24,12 +24,12 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
-    void handleApiException_ShouldReturnBadRequest() {
+    void handleRuntimeException_ShouldReturnBadRequest() {
         // Given
-        ApiException exception = new ApiException("Test error message");
+        RuntimeException exception = new RuntimeException("Test error message");
 
         // When
-        ResponseEntity<String> response = exceptionHandler.handleApiException(exception);
+        ResponseEntity<String> response = exceptionHandler.handleRuntimeException(exception);
 
         // Then
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
@@ -37,15 +37,15 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
-    void handleAllExceptions_ShouldReturnInternalServerError() {
+    void handleGenericException_ShouldReturnInternalServerError() {
         // Given
-        Exception exception = new RuntimeException("Unexpected error");
+        Exception exception = new Exception("Unexpected error");
 
         // When
-        ResponseEntity<String> response = exceptionHandler.handleAllExceptions(exception);
+        ResponseEntity<String> response = exceptionHandler.handleGenericException(exception);
 
         // Then
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-        assertEquals("Something went wrong", response.getBody());
+        assertEquals("An error occurred", response.getBody());
     }
 }

@@ -1,7 +1,9 @@
 package com.andile.blogapi.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 
@@ -21,4 +23,9 @@ public class UserDto {
     @Email(message = "Invalid email format")
     @NotBlank(message = "Email cannot be empty")
     private String email;
+    
+    // User's password
+    @NotBlank(message = "Password cannot be empty")
+    @Size(min = 6, message = "Password must be at least 6 characters")
+    private String password;
 }

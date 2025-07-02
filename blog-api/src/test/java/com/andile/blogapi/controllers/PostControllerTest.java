@@ -141,4 +141,19 @@ class PostControllerTest {
         mockMvc.perform(delete("/api/v1/posts/1"))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    void createPost_WithInvalidData_ShouldReturnValidationError() throws Exception {
+        // Given - PostDto with missing required fields
+        PostDto invalidPost = new PostDto();
+        // Missing title and content (required @NotBlank fields)
+        invalidPost.setAuthorId(1L);
+
+        // When & Then
+        mockMvc.perform(post("/api/v1/posts")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(invalidPost)))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("Validation failed:")));
+    }
 }

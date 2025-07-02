@@ -5,6 +5,7 @@ import com.andile.blogapi.dto.PostDto;
 import com.andile.blogapi.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -33,13 +34,13 @@ public class PostController {
     
     // Create new post
     @PostMapping
-    public PostDto createPost(@RequestBody PostDto postDto) {
+    public PostDto createPost(@Valid @RequestBody PostDto postDto) {
         return postService.createPost(postDto);
     }
     
     // Update existing post
     @PutMapping("/{id}")
-    public PostDto updatePost(@PathVariable Long id, @RequestBody PostDto updatePostDto) {
+    public PostDto updatePost(@PathVariable Long id, @Valid @RequestBody PostDto updatePostDto) {
         return postService.updatePost(id, updatePostDto);
     }
     
