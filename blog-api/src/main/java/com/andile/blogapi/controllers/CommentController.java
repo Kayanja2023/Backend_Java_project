@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import java.util.List;
 
+// This class returns data in Json
 @RestController
-@RequestMapping("/api/v1/comments")
+@RequestMapping("/api/v1/comments") //sets the base path for all endpoints
 @RequiredArgsConstructor
 public class CommentController {
 
