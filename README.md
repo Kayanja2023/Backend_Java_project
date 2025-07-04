@@ -1,11 +1,6 @@
-# Blog API - Spring Boot Learning Project
-
-A basic blogging application built with Spring Boot to demonstrate fundamental concepts including RESTful web services, Hibernate ORM, and object-oriented programming principles.
-
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Learning Objectives](#learning-objectives)
 - [Technology Stack](#technology-stack)
 - [Getting Started](#getting-started)
 - [Data Model](#data-model)
@@ -18,16 +13,6 @@ A basic blogging application built with Spring Boot to demonstrate fundamental c
 
 This is a **4-week learning project** that implements a simple blogging system with basic CRUD operations. The focus is on demonstrating core Spring Boot concepts, Hibernate ORM usage, and fundamental web development practices rather than building a production-ready application.
 
-## Learning Objectives
-
-This project demonstrates understanding of:
-
-- **Spring Boot Fundamentals**: Dependency injection, auto-configuration, and basic annotations
-- **Hibernate ORM**: Entity relationships, basic annotations, and data persistence
-- **RESTful Web Services**: Basic CRUD endpoints following REST principles
-- **Object-Oriented Programming**: Encapsulation, abstraction, and separation of concerns
-- **Testing Fundamentals**: Unit tests with JUnit and Mockito, basic integration testing
-- **Exception Handling**: Simple error management using Spring's exception handling
 
 ## Technology Stack
 
@@ -154,7 +139,7 @@ Basic testing implementation demonstrating testing fundamentals:
 - **Total Tests**: 47
 - **Pass Rate**: 100%
 - **Coverage**: Available via JaCoCo
-
+![img.png](img.png)
 ### Running Tests
 ```bash
 # Run all tests
@@ -177,13 +162,6 @@ Basic exception handling using Spring's `@ControllerAdvice`:
 - **MethodArgumentNotValidException**: Validation errors (400 Bad Request)
 - **Generic Exception**: Unexpected errors (500 Internal Server Error)
 
-### Example Error Response
-```
-HTTP/1.1 400 Bad Request
-Content-Type: text/plain
-
-User not found
-```
 
 ## Project Structure
 
